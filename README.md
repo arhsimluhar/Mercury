@@ -1,1 +1,2 @@
-git commit -m "first commit"
+# Mercury
+Django Blog and App site
