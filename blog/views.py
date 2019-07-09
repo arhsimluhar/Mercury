@@ -11,7 +11,10 @@ class PostListView(ListView):
     context_object_name = 'posts'
     paginate_by = 3
     template_name = 'blog/post/list.html'
+    ordering = ["publish"]
 
+    def get_queryset(self):
+        pass
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post, slug=post, status='published',

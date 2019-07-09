@@ -9,7 +9,7 @@ from .models import Post
 # customising the admin site
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'slug', 'author', 'publish',
+    list_display = ('id', 'title', 'slug', 'author', 'publish',
                     'status')
     list_filter = ('status', 'created', 'publish', 'author')
     search_fields = ('title', 'body')
