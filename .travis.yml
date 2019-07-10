@@ -1,1 +1,4 @@
 language: python
+
+script:
+  timeout 30s python manage.py runserver; exit 0
