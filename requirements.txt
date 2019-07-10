@@ -6,3 +6,5 @@ pytz==2019.1
 sqlparse==0.2.4
 Faker==1.0.7
 django_taggit
+pytest
+pytest-django
