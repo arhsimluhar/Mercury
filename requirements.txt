@@ -9,3 +9,5 @@ django_taggit
 pytest
 pytest-django
 requests
+pytest-cov
+codecov
