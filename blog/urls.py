@@ -8,8 +8,11 @@ from . import views
 # application namespace
 app_name = 'blog'
 urlpatterns = [
+
     # post views
     path('', views.PostListView.as_view(), name='post_list'),
     path('tag/<slug:tag_slug>/', views.PostListView.as_view(), name='post_list_by_tag'),
-    path('<int:year>/<int:month>/<int:day>/<slug:post>/', views.post_detail, name='post_detail'),
+    path('<int:year>/<str:month>/<int:day>/<slug>/', views.PostDateDetailView.as_view(),
+         name='post_detail_by_date_slug'),
+
 ]

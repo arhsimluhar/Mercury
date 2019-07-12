@@ -37,9 +37,9 @@ class Post(models.Model):
     tags = TaggableManager()
 
     def get_absolute_url(self):
-        return reverse('blog:post_detail',
+        return reverse('blog:post_detail_by_date_slug',
                        args=[self.publish.year,
-                             self.publish.month,
+                             self.publish.strftime('%b'),
                              self.publish.day,
                              self.slug])
 

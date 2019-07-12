@@ -1,6 +1,7 @@
 # Create your views here.
 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.views.generic import DateDetailView
 from django.views.generic import ListView
 from taggit.models import Tag
 
@@ -8,7 +9,6 @@ from .models import Post
 
 
 class PostListView(ListView):
-
     context_object_name = 'posts'
     paginate_by = 3
     template_name = 'blog/post/list.html'
@@ -22,14 +22,7 @@ class PostListView(ListView):
             return Post.objects.all()
 
 
-
-
-def post_detail(request, year, month, day, post):
-    post = get_object_or_404(Post, slug=post, status='published',
-                             publish__year=year,
-                             publish__month=month,
-                             publish__day=day)
-
-    return render(request,
-                  'blog/post/detail.html',
-                  {'post': post})
+class PostDateDetailView(DateDetailView):
+    date_field = 'publish'
+    template_name = 'blog/post/detail.html'
+    queryset = Post.objects.all()
