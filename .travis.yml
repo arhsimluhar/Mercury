@@ -11,5 +11,4 @@ install:
 
 
 script:
-  - timeout 30s python manage.py runserver; exit 0
   - pytest  --cov-report term --cov=app/test/
