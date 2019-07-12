@@ -15,7 +15,7 @@ class PostListView(ListView):
     ordering = ["publish"]
 
     def get_queryset(self):
-        if self.kwargs['tag_slug']:
+        if 'tag_slug' in self.kwargs:
             tag = get_object_or_404(Tag, slug=self.kwargs['tag_slug'])
             return Post.objects.all().filter(tags__in=[tag])
         else:
