@@ -1,8 +1,10 @@
 # Create your views here.
 
 from django.shortcuts import get_object_or_404
+from django.views.generic import CreateView
 from django.views.generic import DateDetailView
 from django.views.generic import ListView
+from django.views.generic import UpdateView
 from taggit.models import Tag
 
 from .models import Post
@@ -26,3 +28,11 @@ class PostDateDetailView(DateDetailView):
     date_field = 'publish'
     template_name = 'blog/post/detail.html'
     queryset = Post.objects.all()
+
+
+class PostUpdateView(UpdateView):
+    pass
+
+
+class PostCreateView(CreateView):
+    pass
