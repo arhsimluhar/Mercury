@@ -1,5 +1,5 @@
 from django.contrib.auth import views as auth_views
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
 class LoginUser(auth_views.LoginView):
@@ -10,6 +10,6 @@ class LoginUser(auth_views.LoginView):
 class LogoutUser(auth_views.LogoutView):
     pass
 
-def homepage(request):
-    return render(request, "blog/base.html")
 
+class homepage(TemplateView):
+    template_name = "blog/base.html"
