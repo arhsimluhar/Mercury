@@ -12,3 +12,9 @@ requests
 pytest-cov
 codecov
 numpy
+scipy
+matplotlib
+missingno
+scikit-learn
+tensorflow
+keras
