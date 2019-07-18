@@ -11,3 +11,4 @@ pytest-django
 requests
 pytest-cov
 codecov
+numpy
