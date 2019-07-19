@@ -27,12 +27,16 @@ class PostListView(ListView):
 class PostDateDetailView(DateDetailView):
     date_field = 'publish'
     template_name = 'blog/post/detail.html'
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().filter(status='published')
 
 
 class PostUpdateView(UpdateView):
-    pass
+    model = Post
+    fields = ["title", 'slug', 'author', 'body', 'status']
+    template_name = 'blog/post/update.html'
 
 
 class PostCreateView(CreateView):
-    pass
+    model = Post
+    fields = ["title", 'slug', 'author', 'body', 'status']
+    template_name = 'blog/post/update.html'
