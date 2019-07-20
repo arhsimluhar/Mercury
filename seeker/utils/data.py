@@ -19,6 +19,7 @@ class integer(Data):
         return random.randint(start, stop)
 
 
+
 class float(Data):
     def __int__(self):
         pass
@@ -26,7 +27,7 @@ class float(Data):
     def randFloat(self, start, stop):
         return random.uniform(start, stop)
 
-    def randFloatRange(self, start, stop, step=1, size=1):
+    def randRange(self, start, stop, step=1, size=1):
         return random.choice(np.linspace(start, stop, step), k=size)
 
 
