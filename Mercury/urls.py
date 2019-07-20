@@ -22,6 +22,6 @@ urlpatterns = [
     path('', views.homepage.as_view()),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls', namespace='blog')),
-    path('login/', views.LoginUser.as_view()),
-    path('logout/', views.LogoutUser.as_view())
+    path('accounts/login/', views.LoginUser.as_view(), name="login"),
+    path('accounts/logout/', views.LogoutUser.as_view(), name="logout")
 ]

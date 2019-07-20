@@ -1,6 +1,8 @@
 # Create your views here.
 
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 from django.views.generic import DateDetailView
 from django.views.generic import ListView
@@ -30,12 +32,14 @@ class PostDateDetailView(DateDetailView):
     queryset = Post.objects.all().filter(status='published')
 
 
+@method_decorator(login_required, name='dispatch')
 class PostUpdateView(UpdateView):
     model = Post
     fields = ["title", 'slug', 'author', 'body', 'status']
     template_name = 'blog/post/update.html'
 
 
+@method_decorator(login_required, name='dispatch')
 class PostCreateView(CreateView):
     model = Post
     fields = ["title", 'slug', 'author', 'body', 'status']

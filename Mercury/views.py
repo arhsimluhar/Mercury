@@ -8,7 +8,7 @@ class LoginUser(auth_views.LoginView):
 
 
 class LogoutUser(auth_views.LogoutView):
-    pass
+    template_name = "mercury/base.html"
 
 
 class homepage(TemplateView):
