@@ -19,7 +19,6 @@ class integer(Data):
         return random.randint(start, stop)
 
 
-
 class float(Data):
     def __int__(self):
         pass

@@ -18,3 +18,4 @@ missingno
 scikit-learn
 tensorflow
 keras
+black
