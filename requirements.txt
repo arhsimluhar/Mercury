@@ -19,3 +19,5 @@ scikit-learn
 tensorflow
 keras
 black
+djangorestframework
+httpie
