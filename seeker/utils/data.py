@@ -1,4 +1,5 @@
 import random
+from collections import OrderedDict
 
 import numpy as np
 
@@ -33,3 +34,10 @@ class float(Data):
 class string(Data):
     def __int__(self):
         pass
+
+
+def parseInput(file):
+    data = OrderedDict()
+    with open(file, 'r') as contents:
+        for line in contents.readlines():
+            pass
