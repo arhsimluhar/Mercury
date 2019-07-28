@@ -8,11 +8,28 @@ Will improve this in the next version of the module.
 
 
 class EDA:
-    def __init__(self, file=None, delimiter=",", predictor=None):
+    def __init__(self, file=None, delimiter=",", target=None, predictor=None):
+
+        self.is_target_predictor_set = True
+
         if file:
             self.df = pd.read_csv(file, delimiter=delimiter)
-        if predictor:
-            self.predictorVal = predictor
+            self.target = target
+            self.predictor = predictor
+
+        self.set_target_predictor()
+
+    def set_target_predictor(self):
+
+        if self.target and self.predictor:
+            return
+        elif self.target:
+            self.predictor = [item for item in self.df.columns if item != self.target]
+        elif self.predictor:
+            self.predictor = [item for item in self.df.columns if item != self.predictor]
+        else:
+            self.is_target_predictor_set = False
+            return
 
     def shape(self):
         return self.df.shape
@@ -26,13 +43,33 @@ class EDA:
     def describe(self):
         return self.df.describe()
 
-    def variableCategory(self):
-        pass
+    def variable_category(self):
+        """
+        returns the dictionary that
+        lists predictor and target variables
+        :return dict:
+        """
+        if self.is_target_predictor_set:
+            data = {"Predictor Variable": self.predictor, "Target Variable": self.target}
+        else:
+            data = {"info": "Predictor and  Target variables have not be set yet."}
+        return data
 
-    def dataType(self):
-        pass
+    def data_type(self):
+        data = {}
+        for column in self.df.columns:
+            if self.df.dtypes == 'int64':
+                data[column] = 'Integer'
+            elif self.df.dtypes == "bool":
+                data[column] = 'Boolean'
+            elif self.df.dtypes == "float64":
+                data[column] = "Floating Point"
+            elif data[column] == "object":
+                data[column] = "String"
+            else:
+                raise Exception("Unhandled Data Type.")
 
-    def typeOfVariable(self):
+    def type_of_variable(self):
         pass
 
     def informatics(self):
@@ -42,12 +79,12 @@ class EDA:
         print("****************************")
 
 
-class univariateAnalysis(EDA):
+class UnivariateAnalysis(EDA):
     def __init__(self):
         super().__init__()
 
 
-class bivariateAnalysis(EDA):
+class BivariateAnalysis(EDA):
     def __init__(self):
         super().__init__()
 
@@ -57,6 +94,6 @@ class MissingData(EDA):
         super().__init__()
 
 
-class Outliers(univariateAnalysis, bivariateAnalysis):
+class Outliers(UnivariateAnalysis, BivariateAnalysis):
     def __init__(self):
         super().__init__()
