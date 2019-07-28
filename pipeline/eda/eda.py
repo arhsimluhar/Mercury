@@ -8,7 +8,7 @@ Will improve this in the next version of the module.
 
 
 class EDA:
-    def __int__(self, file=None, delimiter=' '):
+    def __init__(self, file=None, delimiter=","):
         if file:
             self.df = pd.read_csv(file, delimiter=delimiter)
 
@@ -24,7 +24,7 @@ class EDA:
     def describe(self):
         return self.df.describe()
 
-    def __str__(self):
+    def informatics(self):
         print("Dataset Infomatics:")
-        print("Shape:")
-        print("{0} Rows x {1} Columns".format(self.df.shape[0], self.df.shape[1]))
+        print("Shape: ", end="")
+        print("{0} Datapoints x {1} features".format(self.df.shape[0], self.df.shape[1]))
