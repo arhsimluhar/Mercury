@@ -1,6 +1,10 @@
-class VisualData(object):
-    def __int__(self):
-        pass
+import seaborn as sn
 
-    def displayMissingValues(data):
-        pass
+
+class Draw(object):
+    def __int__(self, df=None):
+        if df:
+            self.df = df
+
+    def heatmap(self):
+        return sn.heatmap(self.df, annot=True)
