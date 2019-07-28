@@ -11,13 +11,18 @@ class EDA:
     def __init__(self, file=None, delimiter=",", target=None, predictor=None):
 
         self.is_target_predictor_set = True
-
+        self.discrete_variables = []
+        self.continuous_variables = []
+        self.feature_types = {}
         if file:
             self.df = pd.read_csv(file, delimiter=delimiter)
             self.target = target
             self.predictor = predictor
 
         self.set_target_predictor()
+        self.feature_types = self.set_data_type()
+        self.discrete_variables, self.continuous_variables = self.set_type_of_variable()
+
 
     def set_target_predictor(self):
 
@@ -37,7 +42,7 @@ class EDA:
     def head(self, num=5):
         return self.df.head(num)
 
-    def getTypes(self):
+    def get_types(self):
         return self.df.info()
 
     def describe(self):
@@ -55,7 +60,7 @@ class EDA:
             data = {"info": "Predictor and  Target variables have not be set yet."}
         return data
 
-    def data_type(self):
+    def set_data_type(self):
         data = {}
         for column in self.df.columns:
             if self.df.dtypes == 'int64':
@@ -68,12 +73,30 @@ class EDA:
                 data[column] = "String"
             else:
                 raise Exception("Unhandled Data Type.")
+        return data
 
-    def type_of_variable(self):
-        pass
+    def set_type_of_variable(self):
+        """
+        identifies whether the feature is
+        continuous or discrete variable.
+        :return dict:
+        """
+        data = {"categorial": [], "continuous": []}
+        total_length = self.shape()[0]
+        for column in self.df.columns:
+            if self.feature_types[column] == "String":
+                data["categorial"].append(column)
+                continue
+            unique_entries = self.df[column].unique()
+            if unique_entries < 0.05 * total_length:
+                if total_length >= 10 ** 6:
+                    data["continuous"].append(column)
+                else:
+                    data["categorial"].append(column)
+        return data["categorial"], data["continuous"]
 
     def informatics(self):
-        print("Dataset Infomatics:")
+        print("Dataset Informatics:")
         print("Shape: ", end="")
         print("{0} Datapoints x {1} features".format(self.df.shape[0], self.df.shape[1]))
         print("****************************")
@@ -97,3 +120,6 @@ class MissingData(EDA):
 class Outliers(UnivariateAnalysis, BivariateAnalysis):
     def __init__(self):
         super().__init__()
+
+
+t = EDA(file="test.csv")
