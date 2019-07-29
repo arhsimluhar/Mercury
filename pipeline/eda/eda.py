@@ -23,7 +23,6 @@ class EDA:
         self.feature_types = self.set_data_type()
         self.discrete_variables, self.continuous_variables = self.set_type_of_variable()
 
-
     def set_target_predictor(self):
 
         if self.target and self.predictor:
@@ -63,13 +62,13 @@ class EDA:
     def set_data_type(self):
         data = {}
         for column in self.df.columns:
-            if self.df.dtypes == 'int64':
+            if self.df.dtypes[column] == 'int64':
                 data[column] = 'Integer'
-            elif self.df.dtypes == "bool":
+            elif self.df.dtypes[column] == "bool":
                 data[column] = 'Boolean'
-            elif self.df.dtypes == "float64":
+            elif self.df.dtypes[column] == "float64":
                 data[column] = "Floating Point"
-            elif data[column] == "object":
+            elif self.df.dtypes[column] == "object":
                 data[column] = "String"
             else:
                 raise Exception("Unhandled Data Type.")
@@ -80,6 +79,7 @@ class EDA:
         identifies whether the feature is
         continuous or discrete variable.
         :return dict:
+        TOD0: Improve the algorithm
         """
         data = {"categorial": [], "continuous": []}
         total_length = self.shape()[0]
@@ -87,12 +87,16 @@ class EDA:
             if self.feature_types[column] == "String":
                 data["categorial"].append(column)
                 continue
-            unique_entries = self.df[column].unique()
-            if unique_entries < 0.05 * total_length:
+
+            unique_entries = len(self.df[column].unique())
+            print(unique_entries, column, total_length)
+            if unique_entries <= 0.05 * total_length:
                 if total_length >= 10 ** 6:
                     data["continuous"].append(column)
                 else:
                     data["categorial"].append(column)
+            else:
+                data["continuous"].append(column)
         return data["categorial"], data["continuous"]
 
     def informatics(self):
@@ -122,4 +126,3 @@ class Outliers(UnivariateAnalysis, BivariateAnalysis):
         super().__init__()
 
 
-t = EDA(file="test.csv")
