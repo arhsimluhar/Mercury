@@ -1,0 +1,10 @@
+Items to Complete
+
+#Adding Comment Section for the Blog Posts
+
+# Add WYSIWYG editor for fields in admin interface
+- https://github.com/django-ckeditor/django-ckeditor
+
+#Implementing the visualisation modules (reference from kaggle)
+- https://www.kaggle.com/learn/data-visualization
+- https://www.kaggle.com/learn/data-visualization-from-non-coder-to-coder
