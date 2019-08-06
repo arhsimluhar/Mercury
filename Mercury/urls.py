@@ -24,4 +24,5 @@ urlpatterns = [
     path("blog/", include("blog.urls", namespace="blog")),
     path("accounts/login/", views.LoginUser.as_view(), name="login"),
     path("accounts/logout/", views.LogoutUser.as_view(), name="logout"),
+    path("seeker/", include("seeker.urls", namespace="seeker"))
 ]
