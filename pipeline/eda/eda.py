@@ -110,6 +110,14 @@ class UnivariateAnalysis(EDA):
     def __init__(self):
         super().__init__()
 
+    def central_tendency(self):
+        pass
+
+    def continuous_variables(self):
+        for column in self.df.columns:
+            pass
+
+
 
 class BivariateAnalysis(EDA):
     def __init__(self):
@@ -125,4 +133,19 @@ class Outliers(UnivariateAnalysis, BivariateAnalysis):
     def __init__(self):
         super().__init__()
 
-
+# t = EDA(file="test.csv")
+# print (t.continuous_variables)
+# print(t.discrete_variables)
+# print(t.df['Age'].describe())
+#
+# import sys
+#
+# sys.path.append("../visual")
+# from visual import Draw
+#
+# d = Draw(t.df)
+#
+# x = d.missing_data_visualisation()
+#
+# # Save the full figure...
+# plt.savefig('full_figure.png')
