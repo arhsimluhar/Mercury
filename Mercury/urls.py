@@ -19,7 +19,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path("", views.homepage.as_view()),
+    path("", views.HomePage.as_view(), name="homepage"),
+    path("contact", views.ContactUs.as_view(), name="contact"),
     path("admin/", admin.site.urls),
     path("blog/", include("blog.urls", namespace="blog")),
     path("accounts/login/", views.LoginUser.as_view(), name="login"),

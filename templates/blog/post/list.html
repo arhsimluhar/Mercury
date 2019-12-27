@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "mercury/base.html" %}
 {% block title %}Mercury{% endblock %}
 {% block content %}
     <h1>My Blog</h1>
@@ -14,5 +14,5 @@
         </p>
         {{ post.body |truncatewords:30|linebreaks }}
     {% endfor %}
-    {% include "blog/pagination.html" with page=page_obj %}
+    {% include "blog/post/pagination.html" with page=page_obj %}
 {% endblock %}
