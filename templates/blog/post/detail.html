@@ -5,5 +5,7 @@
     <p>
         Published {{ post.publish }} by {{ post.author }}
     </p>
-    {{ post.body|linebreaks }}
+    {% load markdown_extras %}
+
+    {{ post.body| markdown | safe }}
 {% endblock %}

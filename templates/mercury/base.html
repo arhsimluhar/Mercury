@@ -30,10 +30,27 @@
                         Operating System
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">System Programming</a>
+                        <a class="dropdown-item" href="{% url 'blog:post_list_by_tag' 'System_Programming' %}">System
+                            Programming</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Concepts</a>
+                        <a class="dropdown-item" href="{% url 'blog:post_list_by_tag' 'OS_Concepts' %}">Concepts</a>
                     </div>
+
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Best Practices
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'blog:post_list_by_tag' 'System_Design' %}">System
+                            Design</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'blog:post_list_by_tag' 'Design_Patterns' %}">Design
+                            Patterns</a>
+                    </div>
+
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -56,6 +73,18 @@
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        Apps
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'seeker:home' %}">Seeker</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'blog:post_list_by_tag' 'Life_Experiences' %}">Life Experiences
                         <span class="sr-only"></span></a>

@@ -14,6 +14,8 @@ class PublishedManager(models.Manager):
 
 class Post(models.Model):
     STATUS_CHOICES = (("draft", "Draft"), ("published", "Published"))
+    POST_CHOICES = (("markdown", "Markdown"), ("HTML", "html"))
+
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250, unique_for_date="publish")
     author = models.ForeignKey(
@@ -25,6 +27,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="draft")
+    postType = models.CharField(max_length=10, choices=POST_CHOICES, default="markdown")
 
     objects = models.Manager()  # The default manager.
     published = PublishedManager()  # Our custom manager.
@@ -67,3 +70,17 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=60)
+    email = models.EmailField()
+    subject = models.CharField(max_length=140)
+    message = models.TextField(max_length=1000)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ('timestamp',)
+
+    def __str__(self):
+        return self.subject

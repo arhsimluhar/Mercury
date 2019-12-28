@@ -27,7 +27,7 @@ joblib
 Keras
 Keras-Applications
 Keras-Preprocessing
-kiwisolver
+django-markdownx
 Markdown
 matplotlib
 missingno

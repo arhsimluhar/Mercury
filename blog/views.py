@@ -44,3 +44,4 @@ class PostCreateView(CreateView):
     model = Post
     fields = ["title", "slug", "author", "body", "status"]
     template_name = "blog/post/update.html"
+
