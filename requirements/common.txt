@@ -1,0 +1,4 @@
+#Contains common packages
+django
+django-taggit
+Markdown
