@@ -23,7 +23,7 @@ class PostListView(ListView):
             tag = get_object_or_404(Tag, slug=self.kwargs["tag_slug"])
             return Post.objects.all().filter(tags__in=[tag])
         else:
-            return Post.objects.all()
+            return Post.objects.all().filter(status="published")
 
 
 class PostDateDetailView(DateDetailView):
@@ -44,3 +44,4 @@ class PostCreateView(CreateView):
     model = Post
     fields = ["title", "slug", "author", "body", "status"]
     template_name = "blog/post/update.html"
+

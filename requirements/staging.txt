@@ -1,0 +1,4 @@
+#contains packages for staging/testing area.
+pytest
+pytest-cov
+pytest-django

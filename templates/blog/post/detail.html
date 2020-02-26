@@ -1,9 +1,11 @@
-{% extends "blog/base.html" %}
+{% extends "mercury/base.html" %}
 {% block title %}{{ post.title }}{% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p>
         Published {{ post.publish }} by {{ post.author }}
     </p>
-    {{ post.body|linebreaks }}
+    {% load markdown_extras %}
+
+    {{ post.body| markdown | safe }}
 {% endblock %}

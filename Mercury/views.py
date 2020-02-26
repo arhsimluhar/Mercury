@@ -11,5 +11,9 @@ class LogoutUser(auth_views.LogoutView):
     template_name = "mercury/base.html"
 
 
-class homepage(TemplateView):
-    template_name = "blog/base.html"
+class HomePage(TemplateView):
+    template_name = "mercury/base.html"
+
+
+class ContactUs(TemplateView):
+    template_name = "mercury/contact.html"
