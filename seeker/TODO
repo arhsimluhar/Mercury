@@ -1,0 +1,5 @@
+TODO Create data generation classes and function.
+TODO Create logic for testcase json creation and parsing.
+TODO Create Testcases from the input testcase json.
+TODO Create Solution and testcase Models and register them in admin site.
+TODO Create DjangoRestFramework APIs to create/update/view/delete testcases.

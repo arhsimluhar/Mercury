@@ -1,4 +1,6 @@
 #Contains common packages
 django
 django-taggit
+djangorestframework
 Markdown
+numpy
